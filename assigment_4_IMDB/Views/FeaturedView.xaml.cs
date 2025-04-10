@@ -1,5 +1,9 @@
-﻿using System;
+﻿using assigment_4_IMDB.Data;
+using assigment_4_IMDB.Models;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +24,17 @@ namespace assigment_4_IMDB.Views
     /// </summary>
     public partial class FeaturedView : UserControl
     {
+        private ImdbContext _imdbContext = new();
+        public ObservableCollection<Title> TitleList { get; set; }
         public FeaturedView()
         {
             InitializeComponent();
+            _imdbContext.Titles.Load();
+
+            TitleList = _imdbContext.Titles.Local.ToObservableCollection();
+
+            // Causes program to keep loading garbage data?? Works fine and loads data without.
+            //FeaturedMovies.ItemsSource = TitleList;
         }
     }
 }

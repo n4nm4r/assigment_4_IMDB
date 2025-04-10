@@ -36,7 +36,6 @@ public partial class ImdbContext : DbContext
         optionsBuilder.UseSqlServer(connectionString);
     }
 
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Episode>(entity =>

@@ -13,9 +13,9 @@
     </UserControl.DataContext>
 
     <UserControl.Resources>
-        <DataTemplate x:Key="FeaturedMoviesTemplate">
+        <DataTemplate x:Key="FeaturedMediaTemplate">
             <DockPanel>
-
+                <TextBlock Text="{Binding primaryTitle}"></TextBlock>
             </DockPanel>
         </DataTemplate>
     </UserControl.Resources>
@@ -28,12 +28,12 @@
 
         <StackPanel Grid.Row="0">
             <TextBlock Style="{StaticResource HeaderFont}">Highest rated movies</TextBlock>
-            <ListBox ItemTemplate="{StaticResource FeaturedMoviesTemplate}"/>
+            <ListBox ItemTemplate="{StaticResource FeaturedMediaTemplate}" x:Name="FeaturedMovies"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1">
             <TextBlock Style="{StaticResource HeaderFont}">Highest rated series</TextBlock>
-            <ListBox ItemTemplate="{StaticResource FeaturedMoviesTemplate}"/>
+            <ListBox ItemTemplate="{StaticResource FeaturedMediaTemplate}" x:Name="FeaturedSeries"/>
         </StackPanel>
 
     </Grid>

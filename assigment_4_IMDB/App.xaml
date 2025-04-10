@@ -5,10 +5,23 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
 
+        
+        <!-- TextBlock stylings -->
         <Style TargetType="TextBlock" x:Key="HeaderFont">
             <Setter Property="FontSize" Value="25"/>
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
+        
+        <!-- Button stylings -->
+        <Style TargetType="Button" x:Key="MenuButton">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Width" Value="70"/>
+            <Setter Property="Height" Value="70"/>
+        </Style>
          
+        <!-- Declaring images as resources -->
+        <BitmapImage x:Key="Home" UriSource="/Assets/House.png"/>
+        <BitmapImage x:Key="Search" UriSource="/Assets/MagnifyingGlass.png"/>
+
     </Application.Resources>
 </Application>

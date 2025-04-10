@@ -9,6 +9,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Assets\Images\**" />
+    <EmbeddedResource Remove="Assets\Images\**" />
+    <None Remove="Assets\Images\**" />
+    <Page Remove="Assets\Images\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\House.png" />
+    <None Remove="Assets\MagnifyingGlass.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.3">
       <PrivateAssets>all</PrivateAssets>
@@ -22,8 +34,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Assets\" />
     <Folder Include="Styles\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\House.png" />
+    <Resource Include="Assets\MagnifyingGlass.png" />
   </ItemGroup>
 
 </Project>
