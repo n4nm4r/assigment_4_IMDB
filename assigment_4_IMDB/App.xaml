@@ -4,8 +4,7 @@
              xmlns:local="clr-namespace:assigment_4_IMDB"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-
-        
+      
         <!-- TextBlock stylings -->
         <Style TargetType="TextBlock" x:Key="HeaderFont">
             <Setter Property="FontSize" Value="25"/>
