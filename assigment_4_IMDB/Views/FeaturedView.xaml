@@ -28,7 +28,7 @@
 
         <StackPanel Grid.Row="0">
             <TextBlock Style="{StaticResource HeaderFont}">Highest rated movies</TextBlock>
-            <ListBox ItemTemplate="{StaticResource FeaturedMediaTemplate}" x:Name="FeaturedMovies"/>
+            <DataGrid AutoGenerateColumns="True" x:Name="FeaturedMovies"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1">

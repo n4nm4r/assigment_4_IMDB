@@ -17,6 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace assigment_4_IMDB.Views
 {
     /// <summary>
@@ -25,16 +26,24 @@ namespace assigment_4_IMDB.Views
     public partial class FeaturedView : UserControl
     {
         private ImdbContext _imdbContext = new();
-        public ObservableCollection<Title> TitleList { get; set; }
         public FeaturedView()
         {
             InitializeComponent();
+
+            
             _imdbContext.Titles.Load();
 
-            TitleList = _imdbContext.Titles.Local.ToObservableCollection();
+            var titleQuery =
+                from title in _imdbContext.Titles
+                join rating in _imdbContext.Ratings on title.TitleId equals rating.TitleId
+                where title.TitleType == "movie" && title.PrimaryTitle == "Hamlet"
+                select new
+                {
+                    Title = title.PrimaryTitle,
+                    Rating = rating.AverageRating
+                };
 
-            // Causes program to keep loading garbage data?? Works fine and loads data without.
-            //FeaturedMovies.ItemsSource = TitleList;
+            FeaturedMovies.ItemsSource = titleQuery.ToList();
         }
     }
 }
