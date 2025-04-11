@@ -1,4 +1,5 @@
 ﻿using assigment_4_IMDB.ViewModels;
+using assigment_4_IMDB.Views;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,15 +13,22 @@ using System.Windows.Shapes;
 
 namespace assigment_4_IMDB
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
-            
+            MainContentControl.Content = new FeaturedView(); // Default view on startup
+        }
+
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainContentControl.Content = new FeaturedView();
+        }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainContentControl.Content = new SearchView();
         }
     }
 }
