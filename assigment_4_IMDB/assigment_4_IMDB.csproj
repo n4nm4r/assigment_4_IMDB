@@ -34,10 +34,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Styles\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Resource Include="Assets\House.png" />
     <Resource Include="Assets\MagnifyingGlass.png" />
   </ItemGroup>
