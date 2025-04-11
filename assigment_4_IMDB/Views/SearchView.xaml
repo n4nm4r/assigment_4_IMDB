@@ -40,7 +40,20 @@
 
         <!-- Scrollable List Section -->
         <ScrollViewer Grid.Row="2">
-            <ListBox x:Name="ResultsListBox" DisplayMemberPath="PrimaryTitle"/>
+            <ListBox x:Name="ResultsListBox" Margin="10">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <!-- Title -->
+                            <TextBlock Text="{Binding PrimaryTitle}" FontWeight="Bold" Width="250"/>
+
+                            <!-- Rating -->
+                            <TextBlock Text="{Binding Rating.AverageRating}" Margin="10,0,0,0" Foreground="Gray"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
         </ScrollViewer>
     </Grid>
 </UserControl>
