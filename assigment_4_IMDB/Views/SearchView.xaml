@@ -18,27 +18,29 @@
         </Grid.RowDefinitions>
 
 
-        <ComboBox Margin="167,16,513,16" >
+        <ComboBox x:Name="TypeFilterComboBox" Margin="167,16,513,16">
             <ComboBoxItem Content="Movies"/>
             <ComboBoxItem Content="Series"/>
         </ComboBox>
+
         <!-- Search Section -->
         <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,0,0,10">
+            <TextBox x:Name="SearchTextBox" Width="202" Margin="70,0,0,0"/>
 
-            <TextBox Width="202" Margin="70,0,0,0"></TextBox>
-            <ComboBox Width="150" Margin="5,0,10,0">
+            <ComboBox x:Name="CategoryComboBox" Width="150" Margin="5,0,10,0">
                 <ComboBoxItem Content="Title"/>
                 <ComboBoxItem Content="Genre"/>
                 <ComboBoxItem Content="Actor"/>
                 <ComboBoxItem Content="Rating"/>
                 <ComboBoxItem Content="Year"/>
             </ComboBox>
-            <Button Content="Search" Width="100"/>
+
+            <Button Content="Search" Width="100" Click="SearchButton_Click"/>
         </StackPanel>
 
         <!-- Scrollable List Section -->
         <ScrollViewer Grid.Row="2">
-
+            <ListBox x:Name="ResultsListBox" DisplayMemberPath="PrimaryTitle"/>
         </ScrollViewer>
     </Grid>
 </UserControl>
