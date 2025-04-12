@@ -1,4 +1,6 @@
-﻿using System;
+﻿using assigment_4_IMDB.Models;
+using assigment_4_IMDB.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,7 @@ namespace assigment_4_IMDB.Views
         public SeriesDetailsView()
         {
             InitializeComponent();
+           
         }
     }
 }

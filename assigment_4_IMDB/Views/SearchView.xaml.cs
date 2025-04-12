@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using assigment_4_IMDB.Data;
 using assigment_4_IMDB.Models;
 using Microsoft.EntityFrameworkCore;
@@ -118,5 +119,28 @@ namespace assigment_4_IMDB.Views
 
             return query;
         }
+
+
+        private void TitleTextBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            var textBlock = sender as TextBlock;
+            var clickedTitle = textBlock?.Tag as Title;
+
+            if (clickedTitle != null && clickedTitle.TitleType == "tvSeries")
+            {
+                var seriesDetailsView = new SeriesDetailsView();
+
+                // Optional: if SeriesDetailsView has a viewmodel that needs the Title object:
+                // seriesDetailsView.DataContext = new SeriesDetailsViewModel(clickedTitle);
+
+                // Navigate to MainWindow and replace the content
+                var mainWindow = Application.Current.MainWindow as MainWindow;
+                mainWindow.MainContentControl.Content = seriesDetailsView;
+            }
+        }
+
+
+
+
     }
 }
