@@ -4,18 +4,23 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:assigment_4_IMDB.Views"
+             xmlns:vm="clr-namespace:assigment_4_IMDB.ViewModels"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
 
     <UserControl.Resources>
         <local:StarConverter x:Key="StarConverter" />
     </UserControl.Resources>
-    
+
     <Grid>
         <Grid Margin="20">
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0">
                 <!-- Title -->
                 <TextBlock Text="{Binding PrimaryTitle}" FontSize="24" FontWeight="Bold" TextAlignment="Center" Margin="0,0,0,10"/>
+                <TextBlock Text="{Binding StartYear, FallbackValue='N/A'}" TextAlignment="Center"/>
+
+                <!-- Number of Episodes -->
+                <TextBlock Text="{Binding EpisodeParentTitles.Count, StringFormat='Episodes: {0}'}" FontSize="16" Margin="0,10,0,10" />
 
                 <!-- Rating -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
@@ -48,11 +53,7 @@
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                 </ItemsControl>
-                
-
             </StackPanel>
         </Grid>
-
-
     </Grid>
 </UserControl>
