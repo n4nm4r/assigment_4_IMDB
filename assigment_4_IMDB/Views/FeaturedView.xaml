@@ -13,17 +13,31 @@
     </UserControl.DataContext>
 
     <UserControl.Resources>
+        <local:StarConverter x:Key="StarConverter" />
+
         <DataTemplate x:Key="FeaturedMediaTemplate">
             <DockPanel Style="{StaticResource DockPanelStyle}">
                 <TextBlock Text="{Binding Title}" Style="{StaticResource MediaDisplayText}"></TextBlock>
                 <TextBlock Text="{Binding Rating}" Style="{StaticResource MediaDisplayText}"></TextBlock>
+                <ItemsControl ItemsSource="{Binding Rating, Converter={StaticResource StarConverter}}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="★" Style="{StaticResource StarStyle}"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
             </DockPanel>
         </DataTemplate>
     </UserControl.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="325"/>
+            <RowDefinition Height="330"/>
             <RowDefinition Height="675"/>
         </Grid.RowDefinitions>
 

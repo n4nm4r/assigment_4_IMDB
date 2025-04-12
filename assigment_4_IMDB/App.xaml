@@ -4,11 +4,26 @@
              xmlns:local="clr-namespace:assigment_4_IMDB"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-      
+        
+        <!-- Panel stylings -->
+        <Style TargetType="DockPanel" x:Key="DockPanelStyle">
+            <Setter Property="Width" Value="650"/>
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0.5,1" EndPoint="0.5,0">
+                        <GradientStop Color="PaleVioletRed" Offset="1"/>
+                        <GradientStop Color="SlateBlue" Offset="0" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <!-- TextBlock stylings -->
         <Style TargetType="TextBlock" x:Key="HeaderFont">
             <Setter Property="FontSize" Value="25"/>
             <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="15,0,0,0"/>
         </Style>
 
         <Style TargetType="TextBlock" x:Key="MediaDisplayText">
@@ -16,7 +31,21 @@
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Margin" Value="10"/>
         </Style>
-        
+
+        <Style TargetType="TextBlock" x:Key="StarStyle">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Foreground">
+                <Setter.Value>
+                    <LinearGradientBrush>
+                        <GradientStop Color="LightGoldenrodYellow" Offset="0"/>
+                        <GradientStop Color="DarkGoldenrod" Offset="1" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <!-- Button stylings -->
         <Style TargetType="Button" x:Key="MenuButton">
             <Setter Property="Margin" Value="2"/>
@@ -27,14 +56,16 @@
         <!-- ListBox stylings -->
         <Style TargetType="ListBox" x:Key="MediaDisplayList">
             <Setter Property="MaxHeight" Value="300"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0.5,1" EndPoint="0.5,0">
+                        <GradientStop Color="SkyBlue" Offset="0"/>
+                        <GradientStop Color="SlateBlue" Offset="1" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
         </Style>
-        
-        <!-- DockPanel stylings -->
-        <Style TargetType="DockPanel" x:Key="DockPanelStyle">
-            <Setter Property="Width" Value="650"/>
-            <Setter Property="Height" Value="45"/>
-        </Style>
-         
+
         <!-- Declaring images as resources -->
         <BitmapImage x:Key="Home" UriSource="/Assets/House.png"/>
         <BitmapImage x:Key="Search" UriSource="/Assets/MagnifyingGlass.png"/>

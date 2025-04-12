@@ -36,7 +36,7 @@ namespace assigment_4_IMDB.Views
             var movieQuery =
                 from title in _imdbContext.Titles
                 join rating in _imdbContext.Ratings on title.TitleId equals rating.TitleId
-                where title.TitleType == "movie" && rating.AverageRating > 9.50M
+                where title.TitleType == "movie" && rating.AverageRating >= 9.40M
                 select new
                 {
                     Title = title.PrimaryTitle,
@@ -46,7 +46,7 @@ namespace assigment_4_IMDB.Views
             var seriesQuery =
                 from title in _imdbContext.Titles
                 join rating in _imdbContext.Ratings on title.TitleId equals rating.TitleId
-                where title.TitleType == "tvSeries" && rating.AverageRating > 9.50M
+                where title.TitleType == "tvSeries" && rating.AverageRating >= 9.40M
                 select new
                 {
                     Title = title.PrimaryTitle,
