@@ -7,7 +7,14 @@
         
         <!-- Grid stylings -->
         <Style TargetType="Grid" x:Key="GridStyle">
-            <Setter Property="Background" Value="CornflowerBlue"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#6A9ADB" Offset="0"/>
+                        <GradientStop Color="#4A7DB1" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
         </Style>
 
         <!-- Panel stylings -->
@@ -29,6 +36,7 @@
             <Setter Property="FontSize" Value="25"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Margin" Value="15,0,0,0"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
         </Style>
 
         <Style TargetType="TextBlock" x:Key="MediaDisplayText">
@@ -44,6 +52,7 @@
         </Style>
 
         <Style TargetType="TextBlock" x:Key="DetailsSubHeader">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
             <Setter Property="FontSize" Value="40"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Margin" Value="10"/>
@@ -59,6 +68,14 @@
                         <GradientStop Color="LightGoldenrodYellow" Offset="0"/>
                         <GradientStop Color="DarkGoldenrod" Offset="1" />
                     </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="Black"
+                              BlurRadius="3"
+                              ShadowDepth="1"
+                              Opacity="0.7"/>
                 </Setter.Value>
             </Setter>
         </Style>
@@ -77,6 +94,12 @@
                     </LinearGradientBrush>
                 </Setter.Value>
             </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Opacity" Value="0.85"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                </Trigger>
+            </Style.Triggers>
             <Style.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5" />

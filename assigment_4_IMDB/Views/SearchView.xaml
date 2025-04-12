@@ -14,8 +14,8 @@
 
     <Grid Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" MinHeight="58"/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
@@ -23,7 +23,7 @@
 
 
         <!-- Search Section -->
-        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,0,0,10">
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,10">
             <ComboBox x:Name="TypeFilterComboBox" Width="121" >
                 <ComboBoxItem Content="Movies"/>
                 <ComboBoxItem Content="Series"/>
