@@ -20,7 +20,7 @@
         </Grid.RowDefinitions>
 
 
-        
+
 
         <!-- Search Section -->
         <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,0,0,10">
@@ -39,8 +39,8 @@
             </ComboBox>
 
             <Button Content="Search" Width="100" Click="SearchButton_Click"/>
-            <TextBlock Text="* ★" FontSize="18" Foreground="Gold" Margin="1"/>
-            
+
+
         </StackPanel>
 
         <!-- Scrollable List Section -->
@@ -50,7 +50,10 @@
                     <DataTemplate>
                         <Border BorderThickness="0,0,0,1" BorderBrush="LightGray" Padding="5">
                             <StackPanel>
-                                <TextBlock FontWeight="Bold" FontSize="16" Text="{Binding PrimaryTitle}" />
+                                <TextBlock FontWeight="Bold" FontSize="16" Text="{Binding PrimaryTitle}"
+                                    MouseLeftButtonUp="TitleTextBlock_MouseLeftButtonUp"
+                                    Cursor="Hand"
+                                    Tag="{Binding}" />
 
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                     <!-- Rating text -->
