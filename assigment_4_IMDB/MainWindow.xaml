@@ -6,7 +6,7 @@
         Title="Movie Database" Height="800" Width="700"
         ResizeMode="NoResize">
 
-    <Grid>
+    <Grid Style="{StaticResource GridStyle}">
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition Height="700"/>
