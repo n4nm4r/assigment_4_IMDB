@@ -14,26 +14,27 @@
 
     <UserControl.Resources>
         <DataTemplate x:Key="FeaturedMediaTemplate">
-            <DockPanel>
-                <TextBlock Text="{Binding primaryTitle}"></TextBlock>
+            <DockPanel Style="{StaticResource DockPanelStyle}">
+                <TextBlock Text="{Binding Title}" Style="{StaticResource MediaDisplayText}"></TextBlock>
+                <TextBlock Text="{Binding Rating}" Style="{StaticResource MediaDisplayText}"></TextBlock>
             </DockPanel>
         </DataTemplate>
     </UserControl.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="10*"/>
+            <RowDefinition Height="325"/>
+            <RowDefinition Height="675"/>
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0">
             <TextBlock Style="{StaticResource HeaderFont}">Highest rated movies</TextBlock>
-            <DataGrid AutoGenerateColumns="True" x:Name="FeaturedMovies"/>
+            <ListBox x:Name="FeaturedMovies" Style="{StaticResource MediaDisplayList}" ItemTemplate="{StaticResource FeaturedMediaTemplate}"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1">
             <TextBlock Style="{StaticResource HeaderFont}">Highest rated series</TextBlock>
-            <ListBox ItemTemplate="{StaticResource FeaturedMediaTemplate}" x:Name="FeaturedSeries"/>
+            <ListBox x:Name="FeaturedSeries" Style="{StaticResource MediaDisplayList}" ItemTemplate="{StaticResource FeaturedMediaTemplate}"/>
         </StackPanel>
 
     </Grid>

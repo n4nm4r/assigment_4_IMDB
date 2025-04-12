@@ -33,17 +33,28 @@ namespace assigment_4_IMDB.Views
             
             _imdbContext.Titles.Load();
 
-            var titleQuery =
+            var movieQuery =
                 from title in _imdbContext.Titles
                 join rating in _imdbContext.Ratings on title.TitleId equals rating.TitleId
-                where title.TitleType == "movie" && title.PrimaryTitle == "Hamlet"
+                where title.TitleType == "movie" && rating.AverageRating > 9.50M
                 select new
                 {
                     Title = title.PrimaryTitle,
                     Rating = rating.AverageRating
                 };
 
-            FeaturedMovies.ItemsSource = titleQuery.ToList();
+            var seriesQuery =
+                from title in _imdbContext.Titles
+                join rating in _imdbContext.Ratings on title.TitleId equals rating.TitleId
+                where title.TitleType == "tvSeries" && rating.AverageRating > 9.50M
+                select new
+                {
+                    Title = title.PrimaryTitle,
+                    Rating = rating.AverageRating
+                };
+
+            FeaturedMovies.ItemsSource = movieQuery.OrderByDescending(x => x.Rating).ToList();
+            FeaturedSeries.ItemsSource = seriesQuery.OrderByDescending(x => x.Rating).ToList();
         }
     }
 }

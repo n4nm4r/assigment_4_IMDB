@@ -10,12 +10,29 @@
             <Setter Property="FontSize" Value="25"/>
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
+
+        <Style TargetType="TextBlock" x:Key="MediaDisplayText">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
         
         <!-- Button stylings -->
         <Style TargetType="Button" x:Key="MenuButton">
-            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Margin" Value="2"/>
             <Setter Property="Width" Value="70"/>
             <Setter Property="Height" Value="70"/>
+        </Style>
+        
+        <!-- ListBox stylings -->
+        <Style TargetType="ListBox" x:Key="MediaDisplayList">
+            <Setter Property="MaxHeight" Value="300"/>
+        </Style>
+        
+        <!-- DockPanel stylings -->
+        <Style TargetType="DockPanel" x:Key="DockPanelStyle">
+            <Setter Property="Width" Value="650"/>
+            <Setter Property="Height" Value="45"/>
         </Style>
          
         <!-- Declaring images as resources -->
