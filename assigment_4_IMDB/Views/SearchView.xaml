@@ -8,7 +8,9 @@
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
 
-    
+    <UserControl.Resources>
+        <local:StarConverter x:Key="StarConverter" />
+    </UserControl.Resources>
 
     <Grid Margin="10">
         <Grid.RowDefinitions>
@@ -18,14 +20,15 @@
         </Grid.RowDefinitions>
 
 
-        <ComboBox x:Name="TypeFilterComboBox" Margin="167,16,513,16">
-            <ComboBoxItem Content="Movies"/>
-            <ComboBoxItem Content="Series"/>
-        </ComboBox>
+        
 
         <!-- Search Section -->
         <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,0,0,10">
-            <TextBox x:Name="SearchTextBox" Width="202" Margin="70,0,0,0"/>
+            <ComboBox x:Name="TypeFilterComboBox" Width="121" >
+                <ComboBoxItem Content="Movies"/>
+                <ComboBoxItem Content="Series"/>
+            </ComboBox>
+            <TextBox x:Name="SearchTextBox" Width="202" Margin="20,0,0,0"/>
 
             <ComboBox x:Name="CategoryComboBox" Width="150" Margin="5,0,10,0">
                 <ComboBoxItem Content="Title"/>
@@ -36,23 +39,44 @@
             </ComboBox>
 
             <Button Content="Search" Width="100" Click="SearchButton_Click"/>
+            <TextBlock Text="* ★" FontSize="18" Foreground="Gold" Margin="1"/>
+            
         </StackPanel>
 
         <!-- Scrollable List Section -->
         <ScrollViewer Grid.Row="2">
-            <ListBox x:Name="ResultsListBox" Margin="10">
+            <ListBox x:Name="ResultsListBox">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Horizontal" Margin="5">
-                            <!-- Title -->
-                            <TextBlock Text="{Binding PrimaryTitle}" FontWeight="Bold" Width="250"/>
+                        <Border BorderThickness="0,0,0,1" BorderBrush="LightGray" Padding="5">
+                            <StackPanel>
+                                <TextBlock FontWeight="Bold" FontSize="16" Text="{Binding PrimaryTitle}" />
 
-                            <!-- Rating -->
-                            <TextBlock Text="{Binding Rating.AverageRating}" Margin="10,0,0,0" Foreground="Gray"/>
-                        </StackPanel>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <!-- Rating text -->
+                                    <TextBlock Text="{Binding Rating.AverageRating, StringFormat=Rating: {0:F1}}" Margin="0,0,10,0" VerticalAlignment="Center"/>
+
+                                    <!-- Star display with debug-friendly visuals -->
+                                    <ItemsControl ItemsSource="{Binding Rating.AverageRating, Converter={StaticResource StarConverter}}">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Orientation="Horizontal" />
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="★" FontSize="18" Foreground="Gold" Margin="1"/>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
                     </DataTemplate>
+
                 </ListBox.ItemTemplate>
             </ListBox>
+
 
         </ScrollViewer>
     </Grid>

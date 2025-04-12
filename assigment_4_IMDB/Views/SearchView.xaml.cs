@@ -31,12 +31,12 @@ namespace assigment_4_IMDB.Views
                 return;
             }
 
-            // Prevent repeated identical search
-            if (currentSearchTerm == _lastSearchTerm)
-            {
-                System.Diagnostics.Debug.WriteLine("Search term hasn't changed. Skipping search.");
-                return;
-            }
+            //// Prevent repeated identical search
+            //if (currentSearchTerm == _lastSearchTerm)
+            //{
+            //    System.Diagnostics.Debug.WriteLine("Search term hasn't changed. Skipping search.");
+            //    return;
+            //}
 
             _lastSearchTerm = currentSearchTerm;
 
@@ -52,6 +52,17 @@ namespace assigment_4_IMDB.Views
 
             ResultsListBox.ItemsSource = results;
             System.Diagnostics.Debug.WriteLine($"Search for '{currentSearchTerm}' returned {results.Count} results.");
+
+            //more testing data
+            var debugCount = context.Titles
+            .GroupBy(t => t.TitleType)
+            .Select(g => new { Type = g.Key, Count = g.Count() })
+            .ToList();
+
+            foreach (var group in debugCount)
+            {
+                System.Diagnostics.Debug.WriteLine($"{group.Type}: {group.Count}");
+            }
         }
 
         private IQueryable<Title> BuildQuery(ImdbContext context, string searchTerm, string? selectedType, string? selectedCategory)
@@ -66,7 +77,7 @@ namespace assigment_4_IMDB.Views
             if (selectedType == "Movies")
                 query = query.Where(t => t.TitleType == "movie");
             else if (selectedType == "Series")
-                query = query.Where(t => t.TitleType == "tvSeries");
+                query = query.Where(t => t.TitleType == "tvSeries" && t.EpisodeParentTitles.Any());
 
             // Category filter
             switch (selectedCategory)
