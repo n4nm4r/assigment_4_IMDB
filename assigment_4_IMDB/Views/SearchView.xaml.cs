@@ -32,12 +32,7 @@ namespace assigment_4_IMDB.Views
                 return;
             }
 
-            //// Prevent repeated identical search
-            //if (currentSearchTerm == _lastSearchTerm)
-            //{
-            //    System.Diagnostics.Debug.WriteLine("Search term hasn't changed. Skipping search.");
-            //    return;
-            //}
+            
 
             _lastSearchTerm = currentSearchTerm;
 
@@ -71,7 +66,7 @@ namespace assigment_4_IMDB.Views
             var query = context.Titles
                 .Include(t => t.Rating)
                 .Include(t => t.Genres)
-                .Include(t => t.Names)
+      
                 .AsQueryable();
 
             // Type filter
@@ -93,10 +88,7 @@ namespace assigment_4_IMDB.Views
                         EF.Functions.Like(g.Name.ToLower(), $"%{searchTerm}%")));
                     break;
 
-                case "Actor":
-                    query = query.Where(t => t.Names.Any(n =>
-                        EF.Functions.Like(n.PrimaryName.ToLower(), $"%{searchTerm}%")));
-                    break;
+ 
 
                 case "Rating":
                     if (decimal.TryParse(searchTerm, out decimal rating))
@@ -128,19 +120,18 @@ namespace assigment_4_IMDB.Views
 
             if (clickedTitle != null && clickedTitle.TitleType == "tvSeries")
             {
-                var seriesDetailsView = new SeriesDetailsView();
+                var seriesDetailsView = new SeriesDetailsView(clickedTitle);
 
-                // Optional: if SeriesDetailsView has a viewmodel that needs the Title object:
-                // seriesDetailsView.DataContext = new SeriesDetailsViewModel(clickedTitle);
-
-                // Navigate to MainWindow and replace the content
                 var mainWindow = Application.Current.MainWindow as MainWindow;
                 mainWindow.MainContentControl.Content = seriesDetailsView;
             }
         }
 
 
-
-
     }
+
+
+
+
+    
 }

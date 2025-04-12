@@ -33,7 +33,6 @@
             <ComboBox x:Name="CategoryComboBox" Width="150" Margin="5,0,10,0">
                 <ComboBoxItem Content="Title"/>
                 <ComboBoxItem Content="Genre"/>
-                <ComboBoxItem Content="Actor"/>
                 <ComboBoxItem Content="Rating"/>
                 <ComboBoxItem Content="Year"/>
             </ComboBox>

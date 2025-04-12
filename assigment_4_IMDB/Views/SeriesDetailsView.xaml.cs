@@ -17,15 +17,15 @@ using System.Windows.Shapes;
 
 namespace assigment_4_IMDB.Views
 {
-    /// <summary>
-    /// Interaction logic for SeriesDetailsView.xaml
-    /// </summary>
     public partial class SeriesDetailsView : UserControl
     {
-        public SeriesDetailsView()
+        public Title Series { get; }
+
+        public SeriesDetailsView(Title series)
         {
             InitializeComponent();
-           
+            Series = series;
+            DataContext = Series;
         }
     }
 }
