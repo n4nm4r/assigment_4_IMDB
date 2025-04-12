@@ -4,9 +4,30 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:assigment_4_IMDB.Views"
+             xmlns:vm="clr-namespace:assigment_4_IMDB.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="700" d:DesignWidth="700">
+
+    <UserControl.DataContext>
+        <vm:MovieDetailsViewModel/>
+    </UserControl.DataContext>
+    
     <Grid>
-            
+        <StackPanel>
+            <TextBlock Style="{StaticResource DetailsHeader}" Text="Title" />
+            <DockPanel>
+                <TextBlock Style="{StaticResource DetailsSubHeader}" Text="Genre:"/>
+                <TextBlock Style="{StaticResource DetailsSubHeader}" Text="Action"/>
+            </DockPanel>
+            <DockPanel>
+                <TextBlock Style="{StaticResource DetailsSubHeader}" Text="Rating:"/>
+                <TextBlock Style="{StaticResource DetailsSubHeader}" Text="5.0"/>
+                <TextBlock Style="{StaticResource DetailsSubHeader}" Text="★★★★★"/>
+            </DockPanel>
+            <DockPanel>
+                <TextBlock Style="{StaticResource DetailsSubHeader}" Text="Release Year:"/>
+                <TextBlock Style="{StaticResource DetailsSubHeader}" Text="2005"/>
+            </DockPanel>
+        </StackPanel>
     </Grid>
 </UserControl>

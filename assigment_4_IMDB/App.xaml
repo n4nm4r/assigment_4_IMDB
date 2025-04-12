@@ -5,6 +5,11 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         
+        <!-- Grid stylings -->
+        <Style TargetType="Grid" x:Key="GridStyle">
+            <Setter Property="Background" Value="CornflowerBlue"/>
+        </Style>
+
         <!-- Panel stylings -->
         <Style TargetType="DockPanel" x:Key="DockPanelStyle">
             <Setter Property="Width" Value="650"/>
@@ -32,6 +37,18 @@
             <Setter Property="Margin" Value="10"/>
         </Style>
 
+        <Style TargetType="TextBlock" x:Key="DetailsHeader">
+            <Setter Property="FontSize" Value="50"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="DetailsSubHeader">
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+
         <Style TargetType="TextBlock" x:Key="StarStyle">
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="FontWeight" Value="Bold"/>
@@ -51,19 +68,26 @@
             <Setter Property="Margin" Value="2"/>
             <Setter Property="Width" Value="70"/>
             <Setter Property="Height" Value="70"/>
-        </Style>
-        
-        <!-- ListBox stylings -->
-        <Style TargetType="ListBox" x:Key="MediaDisplayList">
-            <Setter Property="MaxHeight" Value="300"/>
+            <Setter Property="FontSize" Value="18"/>
             <Setter Property="Background">
                 <Setter.Value>
                     <LinearGradientBrush StartPoint="0.5,1" EndPoint="0.5,0">
-                        <GradientStop Color="SkyBlue" Offset="0"/>
-                        <GradientStop Color="SlateBlue" Offset="1" />
+                        <GradientStop Color="PaleVioletRed" Offset="1"/>
+                        <GradientStop Color="SlateBlue" Offset="0" />
                     </LinearGradientBrush>
                 </Setter.Value>
             </Setter>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5" />
+                </Style>
+            </Style.Resources>
+        </Style>
+
+        <!-- ListBox stylings -->
+        <Style TargetType="ListBox" x:Key="MediaDisplayList">
+            <Setter Property="MaxHeight" Value="300"/>
+            <Setter Property="Background" Value="CornflowerBlue"/>
         </Style>
 
         <!-- Declaring images as resources -->
