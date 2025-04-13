@@ -1,11 +1,15 @@
-<Project Sdk="MSTest.Sdk/3.6.4">
+﻿<Project Sdk="MSTest.Sdk/3.6.4">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net9.0-windows</TargetFramework>
     <LangVersion>latest</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <UseVSTest>true</UseVSTest>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\assigment_4_IMDB\assigment_4_IMDB.csproj" />
+  </ItemGroup>
 
 </Project>
