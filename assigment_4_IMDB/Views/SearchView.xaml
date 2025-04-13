@@ -24,27 +24,27 @@
 
         <!-- Search Section -->
         <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,10">
-            <ComboBox x:Name="TypeFilterComboBox" Width="121" >
+            <ComboBox Style="{StaticResource StyledComboBox}" x:Name="TypeFilterComboBox" Width="121" >
                 <ComboBoxItem Content="Movies"/>
                 <ComboBoxItem Content="Series"/>
             </ComboBox>
             <TextBox x:Name="SearchTextBox" Width="202" Margin="20,0,0,0"/>
 
-            <ComboBox x:Name="CategoryComboBox" Width="150" Margin="5,0,10,0">
+            <ComboBox Style="{StaticResource StyledComboBox}"  x:Name="CategoryComboBox" Width="150" Margin="5,0,10,0">
                 <ComboBoxItem Content="Title"/>
                 <ComboBoxItem Content="Genre"/>
                 <ComboBoxItem Content="Rating"/>
                 <ComboBoxItem Content="Year"/>
             </ComboBox>
 
-            <Button Content="Search" Width="100" Click="SearchButton_Click"/>
+            <Button Style="{StaticResource SearchButtonStyle}" Content="Search" Width="100" Click="SearchButton_Click"/>
 
 
         </StackPanel>
 
         <!-- Scrollable List Section -->
         <ScrollViewer Grid.Row="2">
-            <ListBox x:Name="ResultsListBox">
+            <ListBox x:Name="ResultsListBox" Style="{StaticResource SearchResultsList}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Border BorderThickness="0,0,0,1" BorderBrush="LightGray" Padding="5">

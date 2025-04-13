@@ -9,31 +9,25 @@
         <Style TargetType="Grid" x:Key="GridStyle">
             <Setter Property="Background">
                 <Setter.Value>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                        <GradientStop Color="#6A9ADB" Offset="0"/>
-                        <GradientStop Color="#4A7DB1" Offset="1"/>
+                    <LinearGradientBrush StartPoint="0.5,1" EndPoint="0.5,0">
+                        <GradientStop Color="PaleVioletRed" Offset="1"/>
+                        <GradientStop Color="SlateBlue" Offset="0"/>
                     </LinearGradientBrush>
                 </Setter.Value>
-            </Setter>
+            </Setter> 
         </Style>
 
         <!-- Panel stylings -->
         <Style TargetType="DockPanel" x:Key="DockPanelStyle">
             <Setter Property="Width" Value="650"/>
             <Setter Property="Height" Value="45"/>
-            <Setter Property="Background">
-                <Setter.Value>
-                    <LinearGradientBrush StartPoint="0.5,1" EndPoint="0.5,0">
-                        <GradientStop Color="PaleVioletRed" Offset="1"/>
-                        <GradientStop Color="SlateBlue" Offset="0" />
-                    </LinearGradientBrush>
-                </Setter.Value>
-            </Setter>
+            <Setter Property="Background" Value="CornflowerBlue"/>
         </Style>
 
         <!-- TextBlock stylings -->
         <Style TargetType="TextBlock" x:Key="HeaderFont">
             <Setter Property="FontSize" Value="25"/>
+            <Setter Property="Margin" Value="5,0,5,0"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Margin" Value="15,0,0,0"/>
             <Setter Property="FontFamily" Value="Segoe UI"/>
@@ -42,7 +36,9 @@
         <Style TargetType="TextBlock" x:Key="MediaDisplayText">
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="5"/>
+ 
         </Style>
 
         <Style TargetType="TextBlock" x:Key="DetailsHeader">
@@ -86,14 +82,7 @@
             <Setter Property="Width" Value="70"/>
             <Setter Property="Height" Value="70"/>
             <Setter Property="FontSize" Value="18"/>
-            <Setter Property="Background">
-                <Setter.Value>
-                    <LinearGradientBrush StartPoint="0.5,1" EndPoint="0.5,0">
-                        <GradientStop Color="PaleVioletRed" Offset="1"/>
-                        <GradientStop Color="SlateBlue" Offset="0" />
-                    </LinearGradientBrush>
-                </Setter.Value>
-            </Setter>
+            <Setter Property="Background" Value="CornflowerBlue"/>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Opacity" Value="0.85"/>
@@ -110,8 +99,128 @@
         <!-- ListBox stylings -->
         <Style TargetType="ListBox" x:Key="MediaDisplayList">
             <Setter Property="MaxHeight" Value="300"/>
-            <Setter Property="Background" Value="CornflowerBlue"/>
+            
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#6A9ADB" Offset="0"/>
+                        <GradientStop Color="#4A7DB1" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBox">
+                        <Border 
+                    Background="{TemplateBinding Background}" 
+                    CornerRadius="10"
+                    Padding="2">
+                            <ScrollViewer>
+                                <ItemsPresenter />
+                            </ScrollViewer>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
+
+
+        <!-- Search ListBox Style -->
+        <Style TargetType="ListBox" x:Key="SearchResultsList">
+            <Setter Property="Background" Value="CornflowerBlue"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBox">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="10" Padding="5">
+                            <ScrollViewer>
+                                <ItemsPresenter />
+                            </ScrollViewer>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+        <Style TargetType="Button" x:Key="SearchButtonStyle">
+            <Setter Property="Background" Value="CornflowerBlue"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="5,2"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="BorderBrush" Value="DarkBlue"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="5" ShadowDepth="2" Color="#55000080" />
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Opacity" Value="0.9"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="ComboBox" x:Key="StyledComboBox">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="DarkSlateBlue"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="BorderBrush" Value="SlateBlue"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="4"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="3" ShadowDepth="1" Color="#55303060"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+        <Style TargetType="TextBlock" x:Key="GenreItemStyle">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+
+        <Style TargetType="Border" x:Key="GenreItemBorderStyle">
+            <Setter Property="Background" Value="SlateBlue"/>
+            <Setter Property="Padding" Value="4,2"/>
+            <Setter Property="Margin" Value="3"/>
+            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="3" ShadowDepth="1" Color="#66000000"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="SeriesMetaInfo">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="5,0,0,0"/>
+        </Style>
+
+        <Style TargetType="Grid" x:Key="SeriesDetailsGrid">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#f0f0ff" Offset="0"/>
+                        <GradientStop Color="#d0d0f5" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Margin" Value="20"/>
+        </Style>
+
 
         <!-- Declaring images as resources -->
         <BitmapImage x:Key="Home" UriSource="/Assets/House.png"/>

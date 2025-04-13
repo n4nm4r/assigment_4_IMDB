@@ -12,27 +12,26 @@
         <local:StarConverter x:Key="StarConverter" />
     </UserControl.Resources>
 
-    <Grid Background="White" Margin="20">
+    <Grid Style="{StaticResource SeriesDetailsGrid}">
         <DockPanel LastChildFill="True" Margin="10">
+
             <!-- Header -->
             <TextBlock Text="{Binding PrimaryTitle}" 
-                       Style="{StaticResource DetailsHeader}" 
-                       DockPanel.Dock="Top"/>
+                   Style="{StaticResource DetailsHeader}" 
+                   DockPanel.Dock="Top"/>
 
             <!-- Sub-header -->
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="10,0,0,20">
                 <TextBlock Text="{Binding StartYear, FallbackValue='N/A'}" 
-                           FontSize="20" FontWeight="Bold" 
-                           VerticalAlignment="Center"/>
+                       Style="{StaticResource SeriesMetaInfo}"/>
                 <TextBlock Text="{Binding EpisodeParentTitles.Count, StringFormat='  •  Episodes: {0}'}"
-                           FontSize="20" FontWeight="Bold" 
-                           VerticalAlignment="Center" Margin="10,0,0,0"/>
+                       Style="{StaticResource SeriesMetaInfo}"/>
             </StackPanel>
 
             <!-- Rating -->
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="10,0,0,20">
                 <TextBlock Text="{Binding Rating.AverageRating, StringFormat=Rating: {0:F1}}" 
-                           FontSize="16" Margin="0,0,10,0"/>
+                       FontSize="16" Margin="0,0,10,0"/>
                 <ItemsControl ItemsSource="{Binding Rating.AverageRating, Converter={StaticResource StarConverter}}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -52,7 +51,9 @@
             <ItemsControl ItemsSource="{Binding Genres}" DockPanel.Dock="Top" Margin="10,0,0,0">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Name}" FontSize="14" Margin="2"/>
+                        <Border Style="{StaticResource GenreItemBorderStyle}">
+                            <TextBlock Text="{Binding Name}" Style="{StaticResource GenreItemStyle}"/>
+                        </Border>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
                 <ItemsControl.ItemsPanel>
@@ -63,4 +64,5 @@
             </ItemsControl>
         </DockPanel>
     </Grid>
+
 </UserControl>
