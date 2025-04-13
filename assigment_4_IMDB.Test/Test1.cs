@@ -2,6 +2,8 @@
 using assigment_4_IMDB.Models;
 using System.Collections.Generic;
 using System.Linq;
+using assigment_4_IMDB.Views;
+using System.Globalization;
 
 namespace assigment_4_IMDB.Test
 {
@@ -81,6 +83,35 @@ namespace assigment_4_IMDB.Test
             Assert.AreEqual(2, filtered.Count);
             Assert.IsTrue(filtered.Any(t => t.PrimaryTitle == "The Great Adventure"));
             Assert.IsTrue(filtered.Any(t => t.PrimaryTitle == "Adventure Time"));
+        }
+    }
+
+    [TestClass]
+    public class StarConverterTests
+    {
+        [TestMethod]
+        [DataRow(3.0, 3)]
+        [DataRow(4.9, 4)]
+        [DataRow(0.0, 0)]
+        [DataRow(5.1, 5)]
+        public void Convert_ShouldReturnCorrectNumberOfStars(double rating, int expectedStarCount)
+        {
+            var converter = new StarConverter();
+
+            var result = converter.Convert((decimal)rating, null, null, CultureInfo.InvariantCulture) as List<string>;
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(expectedStarCount, result.Count);
+            Assert.IsTrue(result.All(s => s == "★"));
+        }
+
+
+        [TestMethod]
+        [ExpectedException(typeof(System.NotImplementedException))]
+        public void ConvertBack_ShouldThrowNotImplementedException()
+        {
+            var converter = new StarConverter();
+            converter.ConvertBack(null, null, null, CultureInfo.InvariantCulture);
         }
     }
 }
