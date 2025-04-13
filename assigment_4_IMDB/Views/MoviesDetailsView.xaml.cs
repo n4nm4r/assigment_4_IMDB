@@ -1,4 +1,5 @@
-﻿using System;
+﻿using assigment_4_IMDB.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,12 @@ namespace assigment_4_IMDB.Views
     /// </summary>
     public partial class MoviesDetailsView : UserControl
     {
-        public MoviesDetailsView()
+        public Title Movie { get; }
+        public MoviesDetailsView(Title movie)
         {
             InitializeComponent();
+            Movie = movie;
+            DataContext = Movie;
         }
     }
 }

@@ -7,26 +7,33 @@
              xmlns:vm="clr-namespace:assigment_4_IMDB.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="700" d:DesignWidth="700">
-
-    <UserControl.DataContext>
-        <vm:MovieDetailsViewModel/>
-    </UserControl.DataContext>
-    
     <Grid>
         <StackPanel>
-            <TextBlock Style="{StaticResource DetailsHeader}" Text="Title" />
+            <TextBlock Style="{StaticResource DetailsHeader}" Text="{Binding PrimaryTitle}" />
             <DockPanel>
                 <TextBlock Style="{StaticResource DetailsSubHeader}" Text="Genre:"/>
-                <TextBlock Style="{StaticResource DetailsSubHeader}" Text="Action"/>
+                <ItemsControl ItemsSource="{Binding Genres}" DockPanel.Dock="Top" Margin="10,0,0,0">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource GenreItemBorderStyle}">
+                                <TextBlock Text="{Binding Name}" Style="{StaticResource DetailsSubHeader}"/>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel HorizontalAlignment="Left"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
             </DockPanel>
             <DockPanel>
                 <TextBlock Style="{StaticResource DetailsSubHeader}" Text="Rating:"/>
-                <TextBlock Style="{StaticResource DetailsSubHeader}" Text="5.0"/>
-                <TextBlock Style="{StaticResource DetailsSubHeader}" Text="★★★★★"/>
+                <TextBlock Style="{StaticResource DetailsSubHeader}" Text="{Binding Rating.AverageRating}"/>
             </DockPanel>
             <DockPanel>
                 <TextBlock Style="{StaticResource DetailsSubHeader}" Text="Release Year:"/>
-                <TextBlock Style="{StaticResource DetailsSubHeader}" Text="2005"/>
+                <TextBlock Style="{StaticResource DetailsSubHeader}" Text="{Binding StartYear, FallbackValue='N/A'}"/>
             </DockPanel>
         </StackPanel>
     </Grid>

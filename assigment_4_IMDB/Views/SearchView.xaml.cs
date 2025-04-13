@@ -7,6 +7,7 @@ using System.Windows.Input;
 using assigment_4_IMDB.Data;
 using assigment_4_IMDB.Models;
 using assigment_4_IMDB.Services;
+using assigment_4_IMDB.ViewModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace assigment_4_IMDB.Views
@@ -81,6 +82,13 @@ namespace assigment_4_IMDB.Views
 
                 var mainWindow = Application.Current.MainWindow as MainWindow;
                 mainWindow.MainContentControl.Content = seriesDetailsView;
+            }
+            else if (clickedTitle != null && clickedTitle.TitleType == "movie")
+            {
+                var movieDetailsView = new MoviesDetailsView(clickedTitle);
+
+                var mainWindow = Application.Current.MainWindow as MainWindow;
+                mainWindow.MainContentControl.Content = movieDetailsView;
             }
         }
 
