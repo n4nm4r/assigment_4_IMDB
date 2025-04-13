@@ -23,7 +23,7 @@ namespace assigment_4_IMDB.ViewModels
             Year = selectedTitle.StartYear ?? 0;
 
             // Rating stars
-            var avgRating = selectedTitle.Rating?.AverageRating ?? 0;
+            var avgRating = (decimal)(selectedTitle.Rating?.AverageRating ?? 0);
             RatingStars = Enumerable.Range(1, (int)Math.Round(avgRating)).ToList();
 
             // Episodes ordered by season and episode number

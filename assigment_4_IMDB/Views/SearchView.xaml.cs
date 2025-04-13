@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using assigment_4_IMDB.Data;
 using assigment_4_IMDB.Models;
+using assigment_4_IMDB.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace assigment_4_IMDB.Views
@@ -63,54 +64,10 @@ namespace assigment_4_IMDB.Views
 
         private IQueryable<Title> BuildQuery(ImdbContext context, string searchTerm, string? selectedType, string? selectedCategory)
         {
-            var query = context.Titles
-                .Include(t => t.Rating)
-                .Include(t => t.Genres)
-      
-                .AsQueryable();
-
-            // Type filter
-            if (selectedType == "Movies")
-                query = query.Where(t => t.TitleType == "movie");
-            else if (selectedType == "Series")
-                query = query.Where(t => t.TitleType == "tvSeries" && t.EpisodeParentTitles.Any());
-
-            // Category filter
-            switch (selectedCategory)
-            {
-                case "Title":
-                    query = query.Where(t => t.PrimaryTitle != null &&
-                        EF.Functions.Like(t.PrimaryTitle.ToLower(), $"%{searchTerm}%"));
-                    break;
-
-                case "Genre":
-                    query = query.Where(t => t.Genres.Any(g =>
-                        EF.Functions.Like(g.Name.ToLower(), $"%{searchTerm}%")));
-                    break;
-
- 
-
-                case "Rating":
-                    if (decimal.TryParse(searchTerm, out decimal rating))
-                    {
-                        query = query.Where(t => t.Rating != null && t.Rating.AverageRating >= rating);
-                    }
-                    break;
-
-                case "Year":
-                    if (int.TryParse(searchTerm, out int year))
-                    {
-                        query = query.Where(t => t.StartYear == year);
-                    }
-                    break;
-
-                default:
-                    MessageBox.Show("Please select a valid category.");
-                    break;
-            }
-
-            return query;
+            var searchService = new SearchService(context);
+            return searchService.BuildQuery(searchTerm, selectedType, selectedCategory);
         }
+
 
 
         private void TitleTextBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
