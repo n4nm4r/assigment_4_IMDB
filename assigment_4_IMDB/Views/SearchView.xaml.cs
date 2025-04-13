@@ -20,7 +20,7 @@ namespace assigment_4_IMDB.Views
 
         private string _lastSearchTerm = "";
 
-        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        public void SearchButton_Click(object sender, RoutedEventArgs e)
         {
             string? selectedType = (TypeFilterComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString();
             string? selectedCategory = (CategoryComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString();
