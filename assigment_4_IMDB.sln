@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "assigment_4_IMDB", "assigment_4_IMDB\assigment_4_IMDB.csproj", "{994275E7-9878-46F2-BF66-D74CE2EF98CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "assigment_4_IMDB.Test", "assigment_4_IMDB.Test\assigment_4_IMDB.Test.csproj", "{442731B0-3CD9-4D2F-8A92-2AD61ABC7234}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{994275E7-9878-46F2-BF66-D74CE2EF98CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{994275E7-9878-46F2-BF66-D74CE2EF98CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{994275E7-9878-46F2-BF66-D74CE2EF98CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{442731B0-3CD9-4D2F-8A92-2AD61ABC7234}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{442731B0-3CD9-4D2F-8A92-2AD61ABC7234}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{442731B0-3CD9-4D2F-8A92-2AD61ABC7234}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{442731B0-3CD9-4D2F-8A92-2AD61ABC7234}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
